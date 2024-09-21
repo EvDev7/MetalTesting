@@ -13,7 +13,6 @@ class Coordinator: NSObject, MTKViewDelegate {
     var commandQueue: MTLCommandQueue?
     var pipelineState: MTLRenderPipelineState?
     var vertexBuffer: MTLBuffer?
-    var colorBuffer: MTLBuffer?
     var texCoordBuffer: MTLBuffer?
     var colorTexture: MTLTexture?
 
@@ -41,15 +40,6 @@ class Coordinator: NSObject, MTKViewDelegate {
             SIMD3<Float>(1.0, 1.0, 0.0)     // Top right
         ]
         
-        let colorData: [SIMD4<Float>] = [
-            SIMD4<Float>(1.0, 0.0, 0.0, 1.0),  // Red
-            SIMD4<Float>(0.0, 1.0, 0.0, 1.0),  // Green
-            SIMD4<Float>(0.0, 0.0, 1.0, 1.0),   // Blue
-            SIMD4<Float>(1.0, 0.0, 0.0, 1.0),  // Red
-            SIMD4<Float>(0.0, 0.0, 1.0, 1.0),   // Blue
-            SIMD4<Float>(0.0, 1.0, 0.0, 1.0)  // Green
-        ]
-        
         // Samples from the top left
         let texCoordData: [SIMD2<Float>] = [
             SIMD2<Float>(0.0, 0.0), // Top left
@@ -62,8 +52,6 @@ class Coordinator: NSObject, MTKViewDelegate {
 
         // Create a vertex buffer
         vertexBuffer = device.makeBuffer(bytes: vertexData, length: vertexData.count * MemoryLayout<SIMD3<Float>>.size, options: [])
-        
-        colorBuffer = device.makeBuffer(bytes: colorData, length: colorData.count * MemoryLayout<SIMD4<Float>>.size, options: [])
         
         texCoordBuffer = device.makeBuffer(bytes: texCoordData, length: texCoordData.count * MemoryLayout<SIMD2<Float>>.size, options: [])
         
@@ -106,7 +94,6 @@ class Coordinator: NSObject, MTKViewDelegate {
               let commandQueue = commandQueue,
               let pipelineState = pipelineState,
               let vertexBuffer = vertexBuffer,
-              let colorBuffer = colorBuffer,
               let texCoordBuffer = texCoordBuffer,
               let colorTexture = colorTexture
         else { return }
@@ -115,8 +102,7 @@ class Coordinator: NSObject, MTKViewDelegate {
         let renderEncoder = commandBuffer?.makeRenderCommandEncoder(descriptor: passDescriptor)
         renderEncoder?.setRenderPipelineState(pipelineState)
         renderEncoder?.setVertexBuffer(vertexBuffer, offset: 0, index: 0)
-        renderEncoder?.setVertexBuffer(colorBuffer, offset: 0, index: 1)
-        renderEncoder?.setVertexBuffer(texCoordBuffer, offset: 0, index: 2)
+        renderEncoder?.setVertexBuffer(texCoordBuffer, offset: 0, index: 1)
         renderEncoder?.setFragmentTexture(colorTexture, index: 0)
         renderEncoder?.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: 6)
         renderEncoder?.endEncoding()
