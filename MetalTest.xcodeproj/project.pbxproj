@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		883E218F2C9FBB1600ED6E5F /* Projections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883E218E2C9FBB0C00ED6E5F /* Projections.swift */; };
 		88CCCC312C93C1CF004F9BC9 /* MetalTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CCCC302C93C1CF004F9BC9 /* MetalTestApp.swift */; };
 		88CCCC352C93C1D0004F9BC9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88CCCC342C93C1D0004F9BC9 /* Assets.xcassets */; };
 		88CCCC382C93C1D0004F9BC9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88CCCC372C93C1D0004F9BC9 /* Preview Assets.xcassets */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		883E218E2C9FBB0C00ED6E5F /* Projections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Projections.swift; sourceTree = "<group>"; };
 		88CCCC2D2C93C1CF004F9BC9 /* MetalTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MetalTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88CCCC302C93C1CF004F9BC9 /* MetalTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalTestApp.swift; sourceTree = "<group>"; };
 		88CCCC342C93C1D0004F9BC9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 		88CCCC2F2C93C1CF004F9BC9 /* MetalTest */ = {
 			isa = PBXGroup;
 			children = (
+				883E218E2C9FBB0C00ED6E5F /* Projections.swift */,
 				88CCCC5C2C95F129004F9BC9 /* MetalView.swift */,
 				88E802CE2C9E7AFA00651DD6 /* squirtle.png */,
 				88CCCC302C93C1CF004F9BC9 /* MetalTestApp.swift */,
@@ -274,6 +277,7 @@
 				88CCCC632C95F71B004F9BC9 /* TestView.swift in Sources */,
 				88CCCC5F2C95F275004F9BC9 /* Shaders.metal in Sources */,
 				88CCCC5D2C95F129004F9BC9 /* MetalView.swift in Sources */,
+				883E218F2C9FBB1600ED6E5F /* Projections.swift in Sources */,
 				88CCCC312C93C1CF004F9BC9 /* MetalTestApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

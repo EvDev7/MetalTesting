@@ -17,6 +17,8 @@ class Coordinator: NSObject, MTKViewDelegate {
     var colorTexture: MTLTexture?
     var vertexData: [SIMD3<Float>] = []
     var texCoordData: [SIMD2<Float>] = []
+    var projectionMatrix: matrix_float4x4 = orthographicProjectionMatrix(left: -1, right: 1, bottom: -1, top: 1, near: 0, far: 1)
+    var uniformBuffer: MTLBuffer?
 
     init(_ parent: MetalView) {
         self.parent = parent
@@ -56,6 +58,8 @@ class Coordinator: NSObject, MTKViewDelegate {
         vertexBuffer = device.makeBuffer(bytes: vertexData, length: vertexData.count * MemoryLayout<SIMD3<Float>>.size, options: [])
         
         texCoordBuffer = device.makeBuffer(bytes: texCoordData, length: texCoordData.count * MemoryLayout<SIMD2<Float>>.size, options: [])
+        
+        uniformBuffer = device.makeBuffer(bytes: &projectionMatrix, length: MemoryLayout<matrix_float4x4>.size, options: [])
         
         let loader = MTKTextureLoader(device: device)
         do {
@@ -111,6 +115,7 @@ class Coordinator: NSObject, MTKViewDelegate {
         renderEncoder?.setVertexBuffer(vertexBuffer, offset: 0, index: 0)
         renderEncoder?.setVertexBuffer(texCoordBuffer, offset: 0, index: 1)
         renderEncoder?.setFragmentTexture(colorTexture, index: 0)
+        renderEncoder?.setVertexBuffer(uniformBuffer, offset: 0, index: 2)
         renderEncoder?.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: vertexData.count)
         renderEncoder?.endEncoding()
 
