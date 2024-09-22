@@ -24,6 +24,6 @@ vertex VertexOut vertex_main(uint vertexID [[vertex_id]],
 
 fragment float4 fragment_main(VertexOut in [[stage_in]],
                               texture2d<float> tex [[texture(0)]]) {
-    constexpr sampler textureSampler;
+    constexpr sampler textureSampler(filter::linear, mip_filter::nearest); // Enable linear filtering for both texture and mipmaps
     return tex.sample(textureSampler, in.texCoord);
 }

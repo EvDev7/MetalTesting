@@ -57,9 +57,14 @@ class Coordinator: NSObject, MTKViewDelegate {
         
         let loader = MTKTextureLoader(device: device)
         do {
+            // Enable mipmaps generation
+            let textureLoaderOptions: [MTKTextureLoader.Option: Any] = [
+                .generateMipmaps: true
+            ]
+            
             // Make sure if using PNG that they are 32 bit format, otherwise will fail to load
-            if let url = Bundle.main.url(forResource: "test32", withExtension: "png") {
-                self.colorTexture = try loader.newTexture(URL: url, options: nil)
+            if let url = Bundle.main.url(forResource: "squirtle", withExtension: "png") {
+                self.colorTexture = try loader.newTexture(URL: url, options: textureLoaderOptions)
             } else {
                 print("URL for not found.")
             }

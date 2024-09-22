@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		886F33732C9CED65008C104F /* test32.png in Resources */ = {isa = PBXBuildFile; fileRef = 886F33722C9CED65008C104F /* test32.png */; };
 		88CCCC312C93C1CF004F9BC9 /* MetalTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CCCC302C93C1CF004F9BC9 /* MetalTestApp.swift */; };
 		88CCCC352C93C1D0004F9BC9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88CCCC342C93C1D0004F9BC9 /* Assets.xcassets */; };
 		88CCCC382C93C1D0004F9BC9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88CCCC372C93C1D0004F9BC9 /* Preview Assets.xcassets */; };
@@ -18,6 +17,7 @@
 		88CCCC5F2C95F275004F9BC9 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 88CCCC5E2C95F275004F9BC9 /* Shaders.metal */; };
 		88CCCC612C95F5AD004F9BC9 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CCCC602C95F5AD004F9BC9 /* Coordinator.swift */; };
 		88CCCC632C95F71B004F9BC9 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CCCC622C95F71B004F9BC9 /* TestView.swift */; };
+		88E802CF2C9E7AFA00651DD6 /* squirtle.png in Resources */ = {isa = PBXBuildFile; fileRef = 88E802CE2C9E7AFA00651DD6 /* squirtle.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +38,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		886F33722C9CED65008C104F /* test32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test32.png; sourceTree = "<group>"; };
 		88CCCC2D2C93C1CF004F9BC9 /* MetalTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MetalTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88CCCC302C93C1CF004F9BC9 /* MetalTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalTestApp.swift; sourceTree = "<group>"; };
 		88CCCC342C93C1D0004F9BC9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -52,6 +51,7 @@
 		88CCCC5E2C95F275004F9BC9 /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
 		88CCCC602C95F5AD004F9BC9 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		88CCCC622C95F71B004F9BC9 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		88E802CE2C9E7AFA00651DD6 /* squirtle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = squirtle.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				88CCCC5C2C95F129004F9BC9 /* MetalView.swift */,
-				886F33722C9CED65008C104F /* test32.png */,
+				88E802CE2C9E7AFA00651DD6 /* squirtle.png */,
 				88CCCC302C93C1CF004F9BC9 /* MetalTestApp.swift */,
 				88CCCC342C93C1D0004F9BC9 /* Assets.xcassets */,
 				88CCCC362C93C1D0004F9BC9 /* Preview Content */,
@@ -244,8 +244,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				88CCCC382C93C1D0004F9BC9 /* Preview Assets.xcassets in Resources */,
+				88E802CF2C9E7AFA00651DD6 /* squirtle.png in Resources */,
 				88CCCC352C93C1D0004F9BC9 /* Assets.xcassets in Resources */,
-				886F33732C9CED65008C104F /* test32.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
