@@ -15,6 +15,8 @@ class Coordinator: NSObject, MTKViewDelegate {
     var vertexBuffer: MTLBuffer?
     var texCoordBuffer: MTLBuffer?
     var colorTexture: MTLTexture?
+    var vertexData: [SIMD3<Float>] = []
+    var texCoordData: [SIMD2<Float>] = []
 
     init(_ parent: MetalView) {
         self.parent = parent
@@ -31,7 +33,7 @@ class Coordinator: NSObject, MTKViewDelegate {
 
         // Define the vertex data for a triangle
         // Define the vertex data as float3
-        let vertexData: [SIMD3<Float>] = [
+        vertexData = [
             SIMD3<Float>(-1.0, 1.0, 0.0),    // Top left
             SIMD3<Float>(-1.0, 0.0, 0.0),   // Bottom left
             SIMD3<Float>(1.0, 0.0, 0.0),     // Bottom right
@@ -41,7 +43,7 @@ class Coordinator: NSObject, MTKViewDelegate {
         ]
         
         // Samples from the top left
-        let texCoordData: [SIMD2<Float>] = [
+        texCoordData = [
             SIMD2<Float>(0.0, 0.0), // Top left
             SIMD2<Float>(0.0, 1.0), // Bottom left
             SIMD2<Float>(1.0, 1.0),  // Bottom right
@@ -109,7 +111,7 @@ class Coordinator: NSObject, MTKViewDelegate {
         renderEncoder?.setVertexBuffer(vertexBuffer, offset: 0, index: 0)
         renderEncoder?.setVertexBuffer(texCoordBuffer, offset: 0, index: 1)
         renderEncoder?.setFragmentTexture(colorTexture, index: 0)
-        renderEncoder?.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: 6)
+        renderEncoder?.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: vertexData.count)
         renderEncoder?.endEncoding()
 
         commandBuffer?.present(drawable)
