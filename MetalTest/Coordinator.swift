@@ -37,10 +37,10 @@ class Coordinator: NSObject, MTKViewDelegate {
         // Define the vertex data as float3
         vertexData = [
             SIMD3<Float>(-1.0, 1.0, 0.0),    // Top left
-            SIMD3<Float>(-1.0, 0.0, 0.0),   // Bottom left
-            SIMD3<Float>(1.0, 0.0, 0.0),     // Bottom right
+            SIMD3<Float>(-1.0, -1.0, 0.0),   // Bottom left
+            SIMD3<Float>(1.0, -1.0, 0.0),     // Bottom right
             SIMD3<Float>(-1.0, 1.0, 0.0),    // Top left
-            SIMD3<Float>(1.0, 0.0, 0.0),     // Bottom right
+            SIMD3<Float>(1.0, -1.0, 0.0),     // Bottom right
             SIMD3<Float>(1.0, 1.0, 0.0)     // Top right
         ]
         
@@ -106,9 +106,10 @@ class Coordinator: NSObject, MTKViewDelegate {
               let pipelineState = pipelineState,
               let vertexBuffer = vertexBuffer,
               let texCoordBuffer = texCoordBuffer,
-              let colorTexture = colorTexture
+              let colorTexture = colorTexture,
+              let uniformBuffer = uniformBuffer
         else { return }
-
+        
         let commandBuffer = commandQueue.makeCommandBuffer()
         let renderEncoder = commandBuffer?.makeRenderCommandEncoder(descriptor: passDescriptor)
         renderEncoder?.setRenderPipelineState(pipelineState)

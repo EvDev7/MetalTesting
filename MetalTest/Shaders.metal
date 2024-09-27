@@ -28,16 +28,6 @@ vertex VertexOut vertex_main(uint vertexID [[vertex_id]],
     return out;
 }
 
-
-/*vertex VertexOut vertex_main(uint vertexID [[vertex_id]],
-                             const device float3* vertexArray,
-                             const device float2* texCoordArray) {
-    VertexOut out;
-    out.position = float4(vertexArray[vertexID], 1.0);
-    out.texCoord = texCoordArray[vertexID];
-    return out;
-}*/
-
 fragment float4 fragment_main(VertexOut in [[stage_in]],
                               texture2d<float> tex [[texture(0)]]) {
     constexpr sampler textureSampler(filter::linear, mip_filter::nearest); // Enable linear filtering for both texture and mipmaps
