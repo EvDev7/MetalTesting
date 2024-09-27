@@ -17,7 +17,7 @@ class Coordinator: NSObject, MTKViewDelegate {
     var colorTexture: MTLTexture?
     var vertexData: [SIMD3<Float>] = []
     var texCoordData: [SIMD2<Float>] = []
-    var projectionMatrix: matrix_float4x4 = orthographicProjectionMatrix(left: -1, right: 1, bottom: -1, top: 1, near: 0, far: 1)
+    var projectionMatrix: matrix_float4x4?
     var uniformBuffer: MTLBuffer?
 
     init(_ parent: MetalView) {
