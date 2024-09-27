@@ -36,12 +36,12 @@ class Coordinator: NSObject, MTKViewDelegate {
         // Define the vertex data for a triangle
         // Define the vertex data as float3
         vertexData = [
-            SIMD3<Float>(-1.0, 1.0, 0.0),    // Top left
-            SIMD3<Float>(-1.0, -1.0, 0.0),   // Bottom left
-            SIMD3<Float>(1.0, -1.0, 0.0),     // Bottom right
-            SIMD3<Float>(-1.0, 1.0, 0.0),    // Top left
-            SIMD3<Float>(1.0, -1.0, 0.0),     // Bottom right
-            SIMD3<Float>(1.0, 1.0, 0.0)     // Top right
+            SIMD3<Float>(-100.0, 100.0, 0.0),    // Top left
+            SIMD3<Float>(-100.0, -100.0, 0.0),   // Bottom left
+            SIMD3<Float>(100.0, -100.0, 0.0),     // Bottom right
+            SIMD3<Float>(-100.0, 100.0, 0.0),    // Top left
+            SIMD3<Float>(100.0, -100.0, 0.0),     // Bottom right
+            SIMD3<Float>(100.0, 100.0, 0.0)     // Top right
         ]
         
         // Samples from the top left
@@ -94,10 +94,27 @@ class Coordinator: NSObject, MTKViewDelegate {
             print("Error creating pipeline state: \(error)")
         }
     }
-
+    
     func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
-        
+        let worldSize: Float = 500.0
+        let aspectRatio = Float(size.width / size.height)
+
+        // Use the aspect ratio to adjust both left-right and top-bottom
+        if aspectRatio > 1 {
+            // Wider than tall (landscape), adjust left and right
+            projectionMatrix = orthographicProjectionMatrix(left: -aspectRatio*worldSize, right: aspectRatio*worldSize, bottom: -worldSize, top: worldSize, near: 0, far: 1)
+        } else {
+            // Taller than wide (portrait), adjust top and bottom
+            projectionMatrix = orthographicProjectionMatrix(left: -worldSize, right: worldSize, bottom: -worldSize / aspectRatio, top: worldSize / aspectRatio, near: 0, far: 1)
+        }
+
+        // Update the uniform buffer with the new projection matrix
+        if let device = view.device {
+            uniformBuffer = device.makeBuffer(bytes: &projectionMatrix, length: MemoryLayout<matrix_float4x4>.size, options: [])
+        }
     }
+
+
 
     func draw(in view: MTKView) {
         guard let drawable = view.currentDrawable,
